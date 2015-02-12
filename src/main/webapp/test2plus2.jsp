@@ -1,4 +1,3 @@
-<%@ page import="DBConnection.DBTest" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="DBConnection.DBTools" %>
