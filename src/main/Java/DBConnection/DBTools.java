@@ -17,7 +17,7 @@ public class DBTools {
 
     static {
         try {
-            source = InitialContext.doLookup("java:/jdbc/MyDB");
+            source = InitialContext.doLookup("java:/jdbc/NCBank");
         } catch (NamingException e) {
             e.printStackTrace();
             System.out.print("\nCan`t open connection to database\n");
@@ -154,7 +154,6 @@ public class DBTools {
 
                 }
             }
-
             return st.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();

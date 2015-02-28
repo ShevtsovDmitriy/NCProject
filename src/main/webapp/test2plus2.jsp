@@ -1,7 +1,6 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="DBConnection.DBTools" %>
-<%@ page import="DBConnection.MyResultSetHandler" %>
 <%--
   Created by IntelliJ IDEA.
   User: Дмитрий
@@ -20,7 +19,7 @@
     String result;
 %>
 <%
-    rs = DBTools.executeSelect(request.getParameter("query"), new MyResultSetHandler());
+    //rs = DBTools.executeSelect(request.getParameter("query"), new MyResultSetHandler());
     try {
     rs.next();
     result = rs.toString();
