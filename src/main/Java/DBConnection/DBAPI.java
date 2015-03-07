@@ -12,16 +12,23 @@ import java.util.HashMap;
 public class DBAPI {
 
     public static <T> T getObject(){
-        DBObject result =  DBTools.executeSelect("select o.Object_id, O.Name, p.Value, p.Attribute_id from Objects " +
-                "O left join  Params p on O.Object_id = p.Object_id", new ResultSetHandler<DBObject>() {
+        DBObject result =  DBTools.executeSelect("select o.Object_id, O.Name, p.Value, a.NAME attr_name  " +
+                "from Objects O left join  Params p on O.Object_id = p.Object_id " +
+                "left join ATTRIBUTES a on p.ATTRIBUTE_ID = a.ATTRIBUTE_ID ", new ResultSetHandler<DBObject>() {
             @Override
             public DBObject handle(ResultSet rs) {
                 DBObject result;
                 HashMap<String, Object> params = new HashMap<String, Object>();
+                System.out.print("\n" + "something in handler" + "\n");
+
                 try {
-                    params.put("name", rs.getString("name"));
-                    params.put("value", rs.getString("value"));
-                    result =  new DBObject(rs.getInt("object_id"), DBObject.objectType.User, params);
+                    rs.next();
+
+                    params.put("name", rs.getString("NAME"));
+                    do {
+                        params.put(rs.getString("ATTR_NAME"), rs.getString("VALUE"));
+                        result = new DBObject(rs.getInt("OBJECT_ID"), DBObject.objectType.User, params);
+                    } while (rs.next());
                     return result;
                 } catch (SQLException e) {
                     e.printStackTrace();
@@ -30,7 +37,10 @@ public class DBAPI {
             }
         });
 
-        User res = new User();
+
+
+
+        return (T)result;
     }
 
 }

@@ -1,6 +1,10 @@
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="DBConnection.DBTools" %>
+<%@ page import="DBConnection.DBObject" %>
+<%@ page import="DBConnection.DBAPI" %>
+<%@ page import="DBConnection.UserDAO" %>
+<%@ page import="Bank.*" %>
 <%--
   Created by IntelliJ IDEA.
   User: Дмитрий
@@ -15,19 +19,14 @@
 </head>
 <body>
 <%!
-    ResultSet rs;
-    String result;
+    User user;
 %>
 <%
-    //rs = DBTools.executeSelect(request.getParameter("query"), new MyResultSetHandler());
-    try {
-    rs.next();
-    result = rs.toString();
-} catch (SQLException e) {
-    e.printStackTrace();
-}
+    user = UserDAO.getObject();
+
      %>
-<%= result %>
+<%= user.getName() %>
+<%= user.getAddress()%>
 
 
 </body>

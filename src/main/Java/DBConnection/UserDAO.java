@@ -7,8 +7,11 @@ import Bank.*;
  */
 public class UserDAO implements BankObjectDAO {
 
-    public User getObject(){
+    public static User getObject(){
+        DBObject obj = DBAPI.getObject();
 
+        User result = new User(null, (String)obj.getAttributeByName("name"), User.userType.simpleClient, (String)obj.getAttributeByName("address"));
+        return result;
 
     }
 
