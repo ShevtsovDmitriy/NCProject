@@ -19,6 +19,11 @@ public class DBObject {
         this.type = type;
         this.attributes = attributes;
     }
+    public DBObject(long ID, objectType type) {
+        this.ID = ID;
+        this.type = type;
+        this.attributes = attributes;
+    }
 
     public long getID() {
         return ID;
