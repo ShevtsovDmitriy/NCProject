@@ -18,7 +18,9 @@ public class DBAPI {
     public static DBObject getObject(BigInteger id){
         ArrayList<Object> params = new ArrayList<>();
         params.add(id);
-        DBObject result =  DBTools.executeSelect("select o.Object_id, O.Name, a.NAME attr_name, a.ATTR_TYPE, p.Value, p.DATA_VALUE, p.CLOB_VALUE, r.REFERENCE" +
+
+
+        return DBTools.executeSelect("select o.Object_id, O.Name, a.NAME attr_name, a.ATTR_TYPE, p.Value, p.DATA_VALUE, p.CLOB_VALUE, r.REFERENCE" +
                 "  from Objects O " +
                 "  left JOIN ATT_OBJ_TYPES aot on  O.OBJECT_TYPE_ID = aot.OBJECT_TYPE_ID" +
                 "  LEFT join ATTRIBUTES a on aot.ATTRIBUTE_ID = a.ATTRIBUTE_ID" +
@@ -58,11 +60,6 @@ public class DBAPI {
                 return null;
             }
         });
-
-
-
-
-        return result;
     }
 
 }
