@@ -3,6 +3,8 @@ package DBConnection;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -62,7 +64,7 @@ public class DBTools {
         }
         return 0;
     }
-
+    // Выполняет параметризированный запрос, подставляя параметры из params
     public static <T> T executeSelect(String query, ArrayList<Object> params, ResultSetHandler<T> handler){
         ResultSet rs;
 
@@ -97,6 +99,10 @@ public class DBTools {
                     }
                     case "Long": {
                         st.setLong(i, (Long)param);
+                        i++;
+                    }
+                    case "BigInteger": {
+                        st.setBigDecimal(i, new BigDecimal((BigInteger)param));
                         i++;
                     }
                     default: System.out.print("\nWrong parameter");

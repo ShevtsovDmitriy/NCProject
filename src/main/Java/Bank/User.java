@@ -2,6 +2,7 @@ package Bank;
 
 /**
  * Created by Дмитрий on 05.03.2015.
+ * Пользователь банка
  */
 public class User {
 

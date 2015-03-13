@@ -1,10 +1,6 @@
-<%@ page import="java.sql.ResultSet" %>
-<%@ page import="java.sql.SQLException" %>
-<%@ page import="DBConnection.DBTools" %>
 <%@ page import="DBConnection.DBObject" %>
 <%@ page import="DBConnection.DBAPI" %>
-<%@ page import="DBConnection.UserDAO" %>
-<%@ page import="Bank.*" %>
+<%@ page import="java.math.BigInteger" %>
 <%--
   Created by IntelliJ IDEA.
   User: Дмитрий
@@ -19,14 +15,14 @@
 </head>
 <body>
 <%!
-    User user;
+    DBObject user;
 %>
 <%
-    user = UserDAO.getObject();
+    user = DBAPI.getObject(new BigInteger("34"));
 
      %>
-<%= user.getName() %>
-<%= user.getAddress()%>
+<%= user.getInfo() %>
+<%= user.getID()%>
 
 
 </body>

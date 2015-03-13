@@ -4,6 +4,7 @@ import java.sql.Date;
 
 /**
  * Created by Дмитрий on 05.03.2015.
+ * Счёт
  */
 public class Account {
 

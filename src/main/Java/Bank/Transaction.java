@@ -2,6 +2,7 @@ package Bank;
 
 /**
  * Created by Дмитрий on 05.03.2015.
+ * Информация о транзакции
  */
 public class Transaction {
 
